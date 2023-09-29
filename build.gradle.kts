@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application")
 }
 
 group = "com.charchalis.hero"
@@ -16,4 +17,12 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass.set("Application")
+}
+
+dependencies {
+    implementation("com.googlecode.lanterna:lanterna:3.1.1")
 }
