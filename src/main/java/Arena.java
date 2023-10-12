@@ -41,6 +41,15 @@ public class Arena {
         return walls;
     }
 
+    void retrieveCoins(){
+        for(Coin coin: coins){
+            if(coin.getPosition().equals(hero.getPosition())){
+                coins.remove(coin);
+                break;
+            }
+        }
+    }
+
     public void processKey(KeyStroke key) throws IOException {
         System.out.println(key);
 
@@ -50,6 +59,8 @@ public class Arena {
             case ArrowLeft: moveHero(hero.moveLeft()); break;
             case ArrowRight: moveHero(hero.moveRight()); break;
         }
+
+        retrieveCoins();
 
     }
 
@@ -72,6 +83,7 @@ public class Arena {
         hero.draw(graphics);
 
         for(Wall wall: walls) wall.draw(graphics);
+        for(Coin coin: coins) coin.draw(graphics);
     }
 
     private List<Coin> createCoins() {
