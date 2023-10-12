@@ -8,6 +8,9 @@ public abstract class Element {
     public Element(Position position) {
         this.position = position;
     }
+    public Element(int x, int y) {
+        this.position = new Position(x,y);
+    }
 
     abstract void draw(TextGraphics graphics);
 

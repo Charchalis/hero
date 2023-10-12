@@ -8,6 +8,7 @@ import com.googlecode.lanterna.screen.Screen;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Arena {
 
@@ -17,12 +18,14 @@ public class Arena {
     private Hero hero;
 
     private List<Wall> walls;
+    private List<Coin> coins;
 
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
         this.hero = new Hero(width/2, height/2);
         this.walls = createWalls();
+        this.coins = createCoins();
     }
 
     private List<Wall> createWalls() {
@@ -69,5 +72,14 @@ public class Arena {
         hero.draw(graphics);
 
         for(Wall wall: walls) wall.draw(graphics);
+    }
+
+    private List<Coin> createCoins() {
+        Random random = new Random();
+        ArrayList<Coin> coins = new ArrayList<>();
+        for (int i = 0; i < 5; i++)
+            coins.add(new Coin(random.nextInt(width - 2) + 1,
+                    random.nextInt(height - 2) + 1));
+        return coins;
     }
 }
