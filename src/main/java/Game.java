@@ -50,6 +50,10 @@ public class Game {
                 screen.close();
 
         arena.processKey(key);
+        if(arena.verifyMonsterCollisions()){
+            System.out.println("GAME OVER\nhero was killed");
+            screen.close();
+        }
 
     }
 

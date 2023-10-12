@@ -115,5 +115,10 @@ public class Arena {
         return monsters;
     }
 
-    bool verifyMonsterCollision
+    public boolean verifyMonsterCollisions(){
+        for(Monster monster: monsters){
+            if(monster.getPosition().equals(hero.getPosition())) return true;
+        }
+        return false;
+    }
 }
